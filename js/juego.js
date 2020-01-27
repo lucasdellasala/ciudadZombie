@@ -50,7 +50,7 @@ var Juego = {
 }
 
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
-a ellos. No hace falta comprender esta parte. Pero si queres agregar tus propies
+a ellos. No hace falta comprender esta parte. Pero si queres agregar tus propias
 imagenes tendras que poner su ruta en la lista para que pueda ser precargada como
 todas las demas. */
 Juego.iniciarRecursos = function() {
@@ -194,7 +194,7 @@ Juego.calcularAtaques = function() {
 
 
 
-/* Aca se chequea si el jugador se peude mover a la posicion destino.
+/* Aca se chequea si el jugador se puede mover a la posicion destino.
  Es decir, que no haya obstaculos que se interpongan. De ser asi, no podra moverse */
 Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true

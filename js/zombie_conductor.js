@@ -1,4 +1,4 @@
-/* Para insipirarte para la implementacion del ZombieConductor podes usar
+/* Para inspirarte para la implementacion del ZombieConductor podes usar
 al ZombieCaminante de ejemplo. Tene en cuenta que tendra algunas diferencias.
 Por ejemplo, la cantidad parametros que recibe su constructor. En ZombieConductor
 no son exactamente los mismos parametros que en el objeto Enemigo, a diferencia
