@@ -10,8 +10,8 @@ var Jugador = {
   alto: 30,
   velocidad: 10,
   vidas: 5, 
-  perderVidas: function () {
-
+  perderVidas: function (cantVidas) {
+    this.vidas = this.vidas-cantVidas;
   },
   actualizarSprite: function (tecla){
     if (tecla == 'izq') {
