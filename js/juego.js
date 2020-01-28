@@ -218,7 +218,7 @@ Para chequear las colisiones estudiar el metodo posicionValida. Alli
 se ven las colisiones con los obstaculos. En este caso sera con los zombies. */
 Juego.calcularAtaques = function() {
   this.enemigos.forEach(function(enemigo) {
-    if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
+    if (this.colisiona(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
     } else {
@@ -236,9 +236,8 @@ Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
     if (this.colisiona(obstaculo, this.jugador, x, y)) {
-
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      
       puedeMoverse = false
     }
   }, this)
