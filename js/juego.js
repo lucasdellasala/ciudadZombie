@@ -235,7 +235,7 @@ Juego.calcularAtaques = function() {
 Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
-    if (this.intersecan(obstaculo, this.jugador, x, y)) {
+    if (this.colisiona(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
 
@@ -247,7 +247,7 @@ Juego.chequearColisiones = function(x, y) {
 
 /* Este metodo chequea si los elementos 1 y 2 si cruzan en x e y
  x e y representan la coordenada a la cual se quiere mover el elemento2*/
-Juego.intersecan = function(elemento1, elemento2, x, y) {
+Juego.colisiona = function(elemento1, elemento2, x, y) {
   var izquierda1 = elemento1.x
   var derecha1 = izquierda1 + elemento1.ancho
   var techo1 = elemento1.y
