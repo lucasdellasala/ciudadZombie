@@ -13,10 +13,6 @@ var Jugador = {
   perderVidas: function () {
 
   },
-  mover: function (nuevaPosicionEnX, nuevaPosicionEnY) {
-    this.x = nuevaPosicionEnX;
-    this.y = nuevaPosicionEnY;
-  },
   actualizarSprite: function (tecla){
     if (tecla == 'izq') {
       this.sprite = 'imagenes/auto_rojo_izquierda.png';
@@ -32,8 +28,12 @@ var Jugador = {
     }
     this.ancho = tecla == "der" || tecla == 'izq' ? 30: 15;
     this.alto = tecla == "der" || tecla == 'izq' ? 15: 30;
-    }
-
+  },
+  mover: function (nuevaPosicionEnX, nuevaPosicionEnY, tecla) {
+    this.x = nuevaPosicionEnX;
+    this.y = nuevaPosicionEnY;
+    this.actualizarSprite(tecla);
+  },
 
   // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
   // y todo lo que haga falta para que cumpla con sus responsabilidades
