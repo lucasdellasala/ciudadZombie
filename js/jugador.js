@@ -11,7 +11,10 @@ var Jugador = {
   velocidad: 10,
   vidas: 5, 
   perderVidas: function (cantVidas) {
-    this.vidas = this.vidas-cantVidas;
+    console.log(this);
+    console.log("Potencia del obstaculo ", cantVidas);
+    this.vidas = this.vidas-cantVidas>0? this.vidas-cantVidas: 0;
+    console.log(this);
   },
   actualizarSprite: function (tecla){
     if (tecla == 'izq') {
@@ -34,8 +37,6 @@ var Jugador = {
     this.y = nuevaPosicionEnY;
     this.actualizarSprite(tecla);
   },
-
   // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
   // y todo lo que haga falta para que cumpla con sus responsabilidades
-
 }
