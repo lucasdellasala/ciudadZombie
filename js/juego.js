@@ -12,8 +12,8 @@ var Juego = {
   // Aca se configura el tamanio del canvas del juego
   anchoCanvas: 961,
   altoCanvas: 577,
-  jugador: Jugador,
-  vidasInicial: Jugador.vidas,
+  jugador: new Jugador(5),
+  pixelesUnaVida: 0,
   // Indica si el jugador gano
   ganador: false,
 
@@ -105,6 +105,7 @@ Juego.obstaculos = function() {
 Juego.comenzar = function() {
   // Inicializar el canvas del juego
   Dibujante.inicializarCanvas(this.anchoCanvas, this.altoCanvas);
+  this.pixelesUnaVida = this.anchoCanvas / this.jugador.vidas;
   /* El bucle principal del juego se llamara continuamente para actualizar
   los movimientos y el pintado de la pantalla. Sera el encargado de calcular los
   ataques, colisiones, etc*/
@@ -180,11 +181,11 @@ Juego.dibujar = function() {
   });
 
   // El dibujante dibuja las vidas del jugador
-  var tamanio = this.anchoCanvas / this.vidasInicial;
+  
   Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
   for (var i = 0; i < this.jugador.vidas; i++) {
-    var x = tamanio * i
-    Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
+    var x = this.pixelesUnaVida * i
+    Dibujante.dibujarRectangulo('red', x, 0, this.pixelesUnaVida, 8);
   }
 };
 
@@ -222,7 +223,7 @@ Juego.chequearColisiones = function(x, y) {
   this.obstaculos().forEach(function(obstaculo) {
     if (this.colisiona(obstaculo, this.jugador, x, y)) {
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-      Obstaculo.chocar(this.jugador);
+      obstaculo.chocar(this.jugador);
       puedeMoverse = false;
     }
   }, this)
