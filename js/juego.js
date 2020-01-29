@@ -12,8 +12,8 @@ var Juego = {
   // Aca se configura el tamanio del canvas del juego
   anchoCanvas: 961,
   altoCanvas: 577,
-  jugador: Jugador,
-  vidasInicial: Jugador.vidas,
+  jugador: new Jugador(5),
+  pixelesUnaVida: 0,
   // Indica si el jugador gano
   ganador: false,
 
@@ -105,6 +105,7 @@ Juego.obstaculos = function() {
 Juego.comenzar = function() {
   // Inicializar el canvas del juego
   Dibujante.inicializarCanvas(this.anchoCanvas, this.altoCanvas);
+  this.pixelesUnaVida = this.anchoCanvas / this.jugador.vidas;
   /* El bucle principal del juego se llamara continuamente para actualizar
   los movimientos y el pintado de la pantalla. Sera el encargado de calcular los
   ataques, colisiones, etc*/
@@ -180,11 +181,11 @@ Juego.dibujar = function() {
   });
 
   // El dibujante dibuja las vidas del jugador
-  var tamanio = this.anchoCanvas / this.vidasInicial;
+  
   Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
   for (var i = 0; i < this.jugador.vidas; i++) {
-    var x = tamanio * i
-    Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
+    var x = this.pixelesUnaVida * i
+    Dibujante.dibujarRectangulo('red', x, 0, this.pixelesUnaVida, 8);
   }
 };
 
@@ -203,7 +204,7 @@ Para chequear las colisiones estudiar el metodo posicionValida. Alli
 se ven las colisiones con los obstaculos. En este caso sera con los zombies. */
 Juego.calcularAtaques = function() {
   this.enemigos.forEach(function(enemigo) {
-    if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
+    if (this.colisiona(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
     } else {
@@ -220,9 +221,9 @@ Juego.calcularAtaques = function() {
 Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true;
   this.obstaculos().forEach(function(obstaculo) {
-    if (this.intersecan(obstaculo, this.jugador, x, y)) {
+    if (this.colisiona(obstaculo, this.jugador, x, y)) {
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-      Obstaculo.chocar(this.jugador);
+      obstaculo.chocar(this.jugador);
       puedeMoverse = false;
     }
   }, this)
@@ -231,7 +232,7 @@ Juego.chequearColisiones = function(x, y) {
 
 /* Este metodo chequea si los elementos 1 y 2 si cruzan en x e y
  x e y representan la coordenada a la cual se quiere mover el elemento2*/
-Juego.intersecan = function(elemento1, elemento2, x, y) {
+Juego.colisiona = function(elemento1, elemento2, x, y) {
   var izquierda1 = elemento1.x
   var derecha1 = izquierda1 + elemento1.ancho
   var techo1 = elemento1.y
