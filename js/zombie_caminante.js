@@ -21,7 +21,7 @@ ZombieCaminante.prototype.mover = function() {
     this.x -= this.velocidad;
     this.y -= this.velocidad;
   } else {
-    //Sino, hace otro movimiento
+    //Sino, hace otro movimientos
     this.y += this.velocidad;
     this.x -= this.velocidad;
   }

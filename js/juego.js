@@ -20,24 +20,22 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
+    //Vallas horizontales
     new Obstaculo('imagenes/valla_horizontal.png', 90, 300, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 120, 300, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 120, 100, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 150, 100, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 830, 450, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 860, 450, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 750, 250, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 780, 250, 30, 30, 1),
+    //Vallas verticales
     new Obstaculo('imagenes/valla_vertical.png', 190, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 190, 430, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 190, 400, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 190, 430, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 450, 430, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 450, 460, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 450, 200, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 500, 120, 30, 30, 1),
+    //Baches
     new Obstaculo('imagenes/bache.png', 70, 200, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 760, 500, 30, 30, 1),
+    //Autos
     new Obstaculo('imagenes/auto_verde_abajo.png', 70, 400, 15, 30, 1),
     new Obstaculo('imagenes/auto_verde_derecha.png', 70, 430, 30, 15, 1),
     new Obstaculo('imagenes/auto_verde_abajo.png', 565, 280, 15, 30, 1),
@@ -64,7 +62,8 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-
+    new ZombieCaminante('imagenes/zombie1.png', 120, 310, 10, 10, 0.5, {desdeX: 120, hastaX: 130, desdeY: 310, hastaY: 320}),
+    new ZombieConductor('imagenes/tren_horizontal.png', 400, 322, 90, 30, 10, {desdeX: 400, hastaX: 322, desdeY: 800, hastaY: 320}, 'h'),
   ]
 
 }
@@ -177,7 +176,7 @@ Juego.dibujar = function() {
 
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
-    /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
   });
 
   // El dibujante dibuja las vidas del jugador
@@ -195,7 +194,9 @@ Juego.dibujar = function() {
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
-  /* COMPLETAR */
+  this.enemigos.forEach(function(enemigo) {
+    enemigo.mover();
+  });
 };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
