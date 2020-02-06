@@ -286,3 +286,6 @@ document.addEventListener('keydown', function(e) {
 
   Juego.capturarMovimiento(allowedKeys[e.keyCode]);
 });
+
+
+//Solucionar problema por el cual rompe el juego
