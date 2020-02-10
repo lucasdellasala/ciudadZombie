@@ -1,5 +1,5 @@
-var ZombieConductorVertical = function(sprite, x, y, ancho, alto, velocidad, rangoMov) {
-    ZombieConductor.call(this, sprite, x, y, ancho, alto, velocidad, rangoMov);  
+var ZombieConductorVertical = function(x, y, ancho, alto, velocidad, rangoMov) {
+    ZombieConductor.call(this, 'imagenes/tren_vertical.png', x, y, ancho, alto, velocidad, rangoMov);  
 }
   
   ZombieConductorVertical.prototype = Object.create(ZombieConductor.prototype);
