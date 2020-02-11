@@ -15,3 +15,7 @@ var ZombieConductor = function(sprite, x, y, ancho, alto, velocidad, rangoMov) {
 ZombieConductor.prototype = Object.create(Enemigo.prototype);
 ZombieConductor.prototype.constructor = ZombieConductor;
 /* Completar metodos para el movimiento y el ataque */
+ZombieConductor.prototype.atacar= function (jugador) {
+  jugador.perderVidas(jugador.vidas);
+  this.potencia = 0;   
+}

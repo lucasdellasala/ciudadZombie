@@ -15,10 +15,7 @@ var Jugador = function(vidasInicial){
 }
 
 Jugador.prototype.perderVidas = function (cantVidas) {
-  console.log(this);
-  console.log("Potencia del obstaculo ", cantVidas);
   this.vidas = this.vidas-cantVidas>0? this.vidas-cantVidas: 0;
-  console.log(this);
 }
 
 Jugador.prototype.actualizarSprite = function (tecla){

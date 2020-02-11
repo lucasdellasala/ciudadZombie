@@ -15,7 +15,6 @@ var Obstaculo = function (sprite, x, y, ancho, alto, potencia) {
 }
 
 Obstaculo.prototype.chocar = function (jugador) {
-  console.log('Potencia del obstaculo (en Obstaculo)', this.potencia);
   jugador.perderVidas(this.potencia);
   this.potencia = 0;
 };
